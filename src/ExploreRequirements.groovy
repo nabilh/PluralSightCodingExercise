@@ -25,4 +25,18 @@ moduleSpec = moduleSpec.split()
 constructorParams = "(${moduleSpec[0]}, ${moduleSpec[1]})"
 assert constructorParams == "(A, B)"
 
+println '''
+   Now we can take a module spec string and use it to construct a module - need a test for that.
+   We still need to explore parsing an array of module spec strings [<module>, <module>, ...]
+'''
+
+arrayOfModuleSpecs = ["A: B", "B: C"]
+List <String> modules = new ArrayList <String>()
+arrayOfModuleSpecs.each {
+	modules << it
+}
+println modules
+assert modules == ["A: B", "B: C"]
+
+
 
