@@ -19,12 +19,18 @@ class PackageTests {
 	@Test
 	public void testCreatePackageWithThreeDependencies() {
 		Package p = new Package (["A: B", "B: C", "C: D"])
-		println p.modules
 	}
 	@Test
 	public void testBuildOrder() {
 		Package p = new Package (["A: B", "B: C", "C: D"])
 		assert p.buildOrder() == ["D", "C", "B", "A"]
-		println p.buildOrder()
+	}
+	@Test
+	public void testCreateInvalidPackage(){
+		try {
+		Package p = new Package (["A:  B", "B:  C", "C:  A"])
+		} catch (InvalidPackageException){
+			println "Cycle detected"
+		}
 	}
 }
